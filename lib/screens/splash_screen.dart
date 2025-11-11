@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'onboarding_screen.dart'; // بعدين هننشئها
+import 'home_screen.dart'; // تأكدي إن الملف ده موجود
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -10,57 +10,38 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
-  bool showSecondImage = false;
-
   @override
   void initState() {
     super.initState();
-
-    // بعد 2 ثانية نبدّل الصورة
-    Timer(const Duration(seconds: 2), () {
-      setState(() {
-        showSecondImage = true;
-      });
-    });
-
-    // بعد 4 ثواني ننتقل للصفحة اللي بعدها
-    Timer(const Duration(seconds: 4), () {
+    // بعد 3 ثواني ينتقل إلى HomeScreen
+    Timer(const Duration(seconds: 6), () {
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (context) => const OnBoardingScreen()),
+        MaterialPageRoute(builder: (context) => const HomeScreen()),
       );
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.white,
+    return const Scaffold(
+      backgroundColor: Color(0xFFE53935),
       body: Center(
-        child: AnimatedSwitcher(
-          duration: const Duration(milliseconds: 800),
-          child: showSecondImage
-              ? Column(
-            key: const ValueKey(2),
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Image.asset('assets/images/burgers_two.png', height: 180),
-              const SizedBox(height: 20),
-              const Text(
-                "FoodGO",
-                style: TextStyle(
-                  fontSize: 36,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.orange,
-                ),
-              ),
-            ],
-          )
-              : Image.asset(
-            'assets/images/burger_one.png',
-            key: const ValueKey(1),
-            height: 180,
-          ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            // الصورة
+            Image(
+              image: AssetImage('assets/images/Foodgo.png'),
+              height: 170,
+            ),
+            SizedBox(height: 30),
+            // الكلمة FoodGo
+            Image(
+              image: AssetImage('assets/images/burger_one.png'),
+              height: 200,
+            ),
+          ],
         ),
       ),
     );
