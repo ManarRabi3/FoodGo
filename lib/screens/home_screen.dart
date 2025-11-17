@@ -20,22 +20,29 @@ class HomeScreen extends StatelessWidget {
 
         child: Icon(Icons.add, color: Colors.white, size: 35),
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Colors.red,
-        type: BottomNavigationBarType.fixed,
-        selectedItemColor: Colors.white,
-        unselectedItemColor: Colors.white,
-        showSelectedLabels: false,
-        showUnselectedLabels: false,
-        items: const [
-          BottomNavigationBarItem(icon: Icon(Icons.home_outlined), label: ""),
-          BottomNavigationBarItem(icon: Icon(Icons.person_outline), label: ""),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.shopping_cart_outlined),
-            label: "",
-          ),
-          BottomNavigationBarItem(icon: Icon(Icons.favorite_border), label: ""),
-        ],
+      bottomNavigationBar: BottomAppBar(
+        color: Colors.red,
+        notchMargin: 16,
+        padding: EdgeInsets.zero,
+        shape: CircularNotchedRectangle(),
+        child: BottomNavigationBar(
+          elevation: 0,
+          backgroundColor: Colors.transparent,
+          type: BottomNavigationBarType.fixed,
+          selectedItemColor: Colors.white,
+          unselectedItemColor: Colors.white,
+          showSelectedLabels: false,
+          showUnselectedLabels: false,
+          items: const [
+            BottomNavigationBarItem(icon: Icon(Icons.home_outlined), label: ""),
+            BottomNavigationBarItem(icon: Icon(Icons.person_outline), label: ""),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.shopping_cart_outlined),
+              label: "",
+            ),
+            BottomNavigationBarItem(icon: Icon(Icons.favorite_border), label: ""),
+          ],
+        ),
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
