@@ -37,6 +37,7 @@ class HomeScreen extends StatelessWidget {
         ],
       ),
       body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: const [
           SizedBox(height: 70),
 
@@ -46,6 +47,14 @@ class HomeScreen extends StatelessWidget {
             child: Image(
               image: AssetImage('assets/images/Food_black.png'),
               height: 60,
+            ),
+          ),
+          SizedBox(height: 10),
+          Padding(
+            padding: EdgeInsets.only(left: 20),
+            child: Image(
+              image: AssetImage('assets/images/Order your favourite food!.png'),
+              height: 20,
             ),
           ),
         ],
