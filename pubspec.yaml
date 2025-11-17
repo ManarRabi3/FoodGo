@@ -61,6 +61,8 @@ flutter:
   assets:
     - assets/images/Foodgo.png
     - assets/images/burger_one.png
+    - assets/images/Food_black.png
+
 
 
 

@@ -35,9 +35,21 @@ class HomeScreen extends StatelessWidget {
         ],
       ),
       body: Column(
+
           children:const[
-            SizedBox(height: 60),
-            Text("FoodGo")]),
+
+            SizedBox(height: 70),
+
+            Padding(
+                padding:  EdgeInsets.only(left: 20),
+              //padding: EdgeInsets.all(8.0),
+              child: Image(
+                image: AssetImage('assets/images/Food_black.png',),
+                height: 60,
+              ),
+            ),
+           // Text("FoodGo")
+          ]),
     );
   }
 }
