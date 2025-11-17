@@ -62,8 +62,7 @@ flutter:
     - assets/images/Foodgo.png
     - assets/images/burger_one.png
     - assets/images/Food_black.png
-
-
+    - assets/images/Order your favourite food!.png
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

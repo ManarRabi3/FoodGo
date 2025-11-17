@@ -8,8 +8,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
-     // backgroundColor: Colors.white,
+      // backgroundColor: Colors.white,
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
         backgroundColor: Colors.red,
@@ -27,29 +26,30 @@ class HomeScreen extends StatelessWidget {
         unselectedItemColor: Colors.white,
         showSelectedLabels: false,
         showUnselectedLabels: false,
-        items:const [
+        items: const [
           BottomNavigationBarItem(icon: Icon(Icons.home_outlined), label: ""),
           BottomNavigationBarItem(icon: Icon(Icons.person_outline), label: ""),
-          BottomNavigationBarItem(icon: Icon(Icons.shopping_cart_outlined), label: "",),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.shopping_cart_outlined),
+            label: "",
+          ),
           BottomNavigationBarItem(icon: Icon(Icons.favorite_border), label: ""),
         ],
       ),
       body: Column(
+        children: const [
+          SizedBox(height: 70),
 
-          children:const[
-
-            SizedBox(height: 70),
-
-            Padding(
-                padding:  EdgeInsets.only(left: 20),
-              //padding: EdgeInsets.all(8.0),
-              child: Image(
-                image: AssetImage('assets/images/Food_black.png',),
-                height: 60,
-              ),
+          Padding(
+            padding: EdgeInsets.only(left: 20),
+            //padding: EdgeInsets.all(8.0),
+            child: Image(
+              image: AssetImage('assets/images/Food_black.png'),
+              height: 60,
             ),
-           // Text("FoodGo")
-          ]),
+          ),
+        ],
+      ),
     );
   }
 }
