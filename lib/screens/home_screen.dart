@@ -1,9 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:foodgo/tabs/chat.dart';
+import 'package:foodgo/tabs/favorite.dart';
+import 'package:foodgo/tabs/home.dart';
+import 'package:foodgo/tabs/user.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   static const String routName = 'HomeScreen';
 
-  const HomeScreen({super.key});
+  HomeScreen({super.key});
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  int selectedIndex = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -22,51 +33,41 @@ class HomeScreen extends StatelessWidget {
       ),
       bottomNavigationBar: BottomAppBar(
         color: Colors.red,
-        notchMargin: 16,
+        notchMargin: 8,
         padding: EdgeInsets.zero,
         shape: CircularNotchedRectangle(),
         child: BottomNavigationBar(
           elevation: 0,
           backgroundColor: Colors.transparent,
           type: BottomNavigationBarType.fixed,
-          selectedItemColor: Colors.white,
+          selectedItemColor: Colors.grey,
           unselectedItemColor: Colors.white,
           showSelectedLabels: false,
           showUnselectedLabels: false,
+
+          onTap: (index) {
+            selectedIndex = index;
+            setState(() {});
+          },
+          currentIndex: selectedIndex,
+
           items: const [
             BottomNavigationBarItem(icon: Icon(Icons.home_outlined), label: ""),
-            BottomNavigationBarItem(icon: Icon(Icons.person_outline), label: ""),
             BottomNavigationBarItem(
-              icon: Icon(Icons.shopping_cart_outlined),
+              icon: Icon(Icons.person_outline),
               label: "",
             ),
-            BottomNavigationBarItem(icon: Icon(Icons.favorite_border), label: ""),
+            BottomNavigationBarItem(icon: Icon(Icons.comment), label: ""),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.favorite_border),
+              label: "",
+            ),
           ],
         ),
       ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: const [
-          SizedBox(height: 70),
-
-          Padding(
-            padding: EdgeInsets.only(left: 20),
-            //padding: EdgeInsets.all(8.0),
-            child: Image(
-              image: AssetImage('assets/images/Food_black.png'),
-              height: 60,
-            ),
-          ),
-          SizedBox(height: 10),
-          Padding(
-            padding: EdgeInsets.only(left: 20),
-            child: Image(
-              image: AssetImage('assets/images/Order your favourite food!.png'),
-              height: 20,
-            ),
-          ),
-        ],
-      ),
+      body: tabs[selectedIndex],
     );
   }
+  List<Widget>tabs=[HomeTab(),UserTab(),ChatTab(),FavoriteTab()];
+
 }
