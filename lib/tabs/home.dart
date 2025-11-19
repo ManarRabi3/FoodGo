@@ -9,7 +9,7 @@ class HomeTab extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        SizedBox(height: 70),
+        SizedBox(height: 50),
         Padding(
           padding: EdgeInsets.only(left: 20),
           //padding: EdgeInsets.all(8.0),
@@ -26,7 +26,7 @@ class HomeTab extends StatelessWidget {
             height: 20,
           ),
         ),
-        SizedBox(height: 30),
+        SizedBox(height: 20),
         Padding(
           padding: EdgeInsets.only(left: 20),
           child: Row(
@@ -55,7 +55,7 @@ class HomeTab extends StatelessWidget {
                   ),
                 ),
               ),
-              const SizedBox(width: 20),
+              const SizedBox(width: 10),
 
               Padding(
                 padding: EdgeInsets.only(right: 20),
@@ -79,14 +79,69 @@ class HomeTab extends StatelessWidget {
             style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
           ),
         ),
-        SizedBox(height: 10),
-
+        //SizedBox(height: 5),
 
         SingleChildScrollView(
           scrollDirection: Axis.horizontal,
           child: Row(
             children: [
-              // هنضيف أول تاب هنا بعد شوية
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                child: Chip(
+                  label: Text(
+                    'All',
+                    style: TextStyle(color:Color(0xFF6A6A6A), fontWeight: FontWeight.bold),
+                  ),
+                  backgroundColor: Color(0xFFF3F4F6),
+                  padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                ),
+              ),
+
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                child: Chip(
+                  label: Text(
+                    'Combos',
+                    style: TextStyle(color:Color(0xFF6A6A6A), fontWeight: FontWeight.bold),
+
+                  ),
+                  backgroundColor: Color(0xFFF3F4F6),
+                  padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                child: Chip(
+                  label: Text(
+                    'Sliders',
+                    style: TextStyle(color:Color(0xFF6A6A6A),fontWeight: FontWeight.bold),
+                  ),
+                  backgroundColor: Color(0xFFF3F4F6),
+                  padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                child: Chip(
+                  label: Text(
+                    'Classic',
+                    style: TextStyle(color:Color(0xFF6A6A6A), fontWeight: FontWeight.bold),
+                  ),
+                  backgroundColor: Color(0xFFF3F4F6),
+                  padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                child: Chip(
+                  label: Text(
+                    'Drinks',
+                    style: TextStyle(color:Color(0xFF6A6A6A), fontWeight: FontWeight.bold),
+                  ),
+                  backgroundColor: Color(0xFFF3F4F6),
+                  padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                ),
+              ),
             ],
           ),
         ),
