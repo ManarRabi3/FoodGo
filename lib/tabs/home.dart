@@ -15,12 +15,28 @@ class HomeTab extends StatelessWidget {
       children: [
         const HomeTitleSection(),
 
-        SizedBox(height: 20),
+       // SizedBox(height: 20),
 
         const SearchSection(),
 
        const CategoriesSection(),
-        const ProductCard(),
+
+        Expanded(
+          child: GridView.builder(
+            padding: EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 2,
+              crossAxisSpacing: 15,
+              mainAxisSpacing: 15,
+              childAspectRatio: 0.70,
+            ),
+            itemCount: 10,
+            itemBuilder: (context, index) {
+              return ProductCard();
+            },
+          ),
+        )
+
       ],
     );
   }
