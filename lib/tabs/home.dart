@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:foodgo/models/Product_model.dart';
+import 'package:foodgo/models/product_model.dart';
 //import 'package:flutter/rendering.dart';
 import 'package:foodgo/widgets/categories_tabs.dart';
 import 'package:foodgo/widgets/home_title_section.dart';

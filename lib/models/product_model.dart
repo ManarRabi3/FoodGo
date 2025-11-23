@@ -96,12 +96,5 @@ List<Product> products = [
     rating: 4.7,
   ),
 
-  Product(
-    name: "Hamburger",
-    description: "  Fried Chicken Burger",
-    image: "assets/images/items/image5.png",
-    price: 15.00,
-    rating: 4.8,
-  ),
 
 ];
