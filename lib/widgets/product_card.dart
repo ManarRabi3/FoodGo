@@ -1,12 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:foodgo/models/Product_model.dart';
 
 class ProductCard extends StatelessWidget {
-  const ProductCard({super.key});
+  final Product product;
+
+  const ProductCard({
+    super.key,
+    required this.product,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(25),
+      padding: EdgeInsets.all(12),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(16),
@@ -22,11 +28,10 @@ class ProductCard extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
 
-
           ClipRRect(
             borderRadius: BorderRadius.circular(16),
             child: Image.asset(
-              "assets/images/items/image6.png",
+              product.image,
               height: 110,
               width: double.infinity,
               fit: BoxFit.cover,
@@ -36,7 +41,7 @@ class ProductCard extends StatelessWidget {
           SizedBox(height: 10),
 
           Text(
-            "Cheeseburger",
+            product.name,
             style: TextStyle(
               fontWeight: FontWeight.bold,
               fontSize: 16,
@@ -44,7 +49,7 @@ class ProductCard extends StatelessWidget {
           ),
 
           Text(
-            "Wendy’s Burger",
+            product.description,
             style: TextStyle(
               fontSize: 13,
               color: Colors.black54,
@@ -56,14 +61,12 @@ class ProductCard extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-
-              // ⭐ + الرقم
               Row(
                 children: [
                   Icon(Icons.star, color: Colors.orange, size: 18),
                   SizedBox(width: 4),
                   Text(
-                    "4.9",
+                    product.rating.toString(),
                     style: TextStyle(
                       fontSize: 14,
                       fontWeight: FontWeight.w600,
@@ -72,6 +75,7 @@ class ProductCard extends StatelessWidget {
                   ),
                 ],
               ),
+
               Icon(
                 Icons.favorite_border,
                 size: 22,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:foodgo/models/Product_model.dart';
 //import 'package:flutter/rendering.dart';
 import 'package:foodgo/widgets/categories_tabs.dart';
 import 'package:foodgo/widgets/home_title_section.dart';
@@ -30,9 +31,11 @@ class HomeTab extends StatelessWidget {
               mainAxisSpacing: 15,
               childAspectRatio: 0.70,
             ),
-            itemCount: 10,
+            itemCount: products.length,
             itemBuilder: (context, index) {
-              return ProductCard();
+              return ProductCard(
+                product: products[index],
+              );
             },
           ),
         )
