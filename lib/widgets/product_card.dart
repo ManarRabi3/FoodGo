@@ -67,13 +67,7 @@ class ProductCard extends StatelessWidget {
                 ),
               ),
 
-              Text(
-                product.description,
-                style: TextStyle(
-                  fontSize: 13,
-                  color: Colors.black54,
-                ),
-              ),
+
 
               SizedBox(height: 8),
 

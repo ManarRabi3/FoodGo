@@ -22,12 +22,11 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
 
-            // ------------------ Back & Favorite Row + Product Image ------------------
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 40),
               child: Column(
                 children: [
-                  // Row بتاع Back و Favorite
+                  //  Back و Favorite
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -45,12 +44,11 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                     ],
                   ),
 
-                  SizedBox(height: 10), // مسافة بين الأزرار والصورة
-
-                  // صورة المنتج
+                  SizedBox(height: 10),
+                  // Product Image
                   Container(
                     width: double.infinity,
-                    height: 280,
+                    height: 270,
                     child: Image.asset(
                       widget.product.image,
                       fit: BoxFit.cover,
@@ -60,7 +58,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
               ),
             ),
 
-            // ------------------ اسم + سعر + ريتنج ------------------
+            //  اسم + سعر + ريتنج
             Padding(
               padding: const EdgeInsets.all(16.0),
               child: Column(
@@ -69,13 +67,13 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                   Text(
                     widget.product.name,
                     style: TextStyle(
-                      fontSize: 24,
+                      fontSize: 16,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
 
-                  SizedBox(height: 10),
-                  // ------------------ الوصف ------------------
+                  SizedBox(height: 4),
+                  //  الوصف
                   Text(
                     widget.product.description,
                     style: TextStyle(
@@ -84,7 +82,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                       fontSize: 15,
                     ),
                   ),
-                  SizedBox(height: 10),
+                  SizedBox(height: 4),
                   Row(
                     children: [
                       Icon(Icons.star, color: Colors.orange, size: 20),
@@ -107,9 +105,9 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
 
 
 
-                  SizedBox(height: 25),
+                  SizedBox(height: 4),
 
-                  // ------------------ Spicy level ------------------
+                  //  Spicy level
                   Text(
                     "Spicy Level",
                     style: TextStyle(
@@ -153,9 +151,9 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                     ],
                   ),
 
-                  SizedBox(height:20),
+                  SizedBox(height:10),
 
-                  // ------------------- Counter + Final Price -------------------
+                  //  Counter + Final Price
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -194,15 +192,15 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                         style: TextStyle(
                           fontSize: 24,
                           fontWeight: FontWeight.bold,
-                          color: Colors.black87,
+                          color: Colors.red,
                         ),
                       ),
                     ],
                   ),
 
-                  SizedBox(height: 25),
+                  SizedBox(height: 10),
 
-                  // ------------------ Add to Cart ------------------
+                  //Order Now
                   Container(
                     width: double.infinity,
                     padding: EdgeInsets.symmetric(vertical: 16),
@@ -222,7 +220,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                     ),
                   ),
 
-                  SizedBox(height: 40),
+                  SizedBox(height: 20),
                 ],
               ),
             ),
@@ -232,7 +230,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
     );
   }
 
-  // ------------------ Widgets ------------------
+  //  Widgets
   Widget spiceOption(String text) {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 14, vertical: 10),
@@ -249,7 +247,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
       padding: EdgeInsets.symmetric(horizontal: 14, vertical: 10),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: Colors.black54),
+        border: Border.all(color: Colors.red),
       ),
       child: Text(text),
     );
