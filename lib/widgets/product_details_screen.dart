@@ -1,61 +1,63 @@
 import 'package:flutter/material.dart';
 import 'package:foodgo/models/product_model.dart';
 
-class ProductDetailsScreen extends StatelessWidget {
+class ProductDetailsScreen extends StatefulWidget {
   final Product product;
 
   const ProductDetailsScreen({super.key, required this.product});
 
   @override
+  State<ProductDetailsScreen> createState() => _ProductDetailsScreenState();
+}
+
+class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
+  int quantity = 1;
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
 
-            // ------------------ صورة المنتج ------------------
-            Stack(
-              children: [
+            // ------------------ Back & Favorite Row + Product Image ------------------
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 40),
+              child: Column(
+                children: [
+                  // Row بتاع Back و Favorite
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      CircleAvatar(
+                        backgroundColor: Colors.white,
+                        child: IconButton(
+                          icon: Icon(Icons.arrow_back),
+                          onPressed: () => Navigator.pop(context),
+                        ),
+                      ),
+                      CircleAvatar(
+                        backgroundColor: Colors.white,
+                        child: Icon(Icons.favorite_border),
+                      ),
+                    ],
+                  ),
 
-                // زر Back
-                Positioned(
-                  top: 40,
-                  left: 16,
-                  child: CircleAvatar(
-                    backgroundColor: Colors.white,
-                    child: IconButton(
-                      icon: Icon(Icons.arrow_back),
-                      onPressed: () => Navigator.pop(context),
+                  SizedBox(height: 10), // مسافة بين الأزرار والصورة
+
+                  // صورة المنتج
+                  Container(
+                    width: double.infinity,
+                    height: 280,
+                    child: Image.asset(
+                      widget.product.image,
+                      fit: BoxFit.cover,
                     ),
                   ),
-                ),
-
-                // زر Favorite
-                Positioned(
-                  top: 40,
-                  right: 16,
-                  child: CircleAvatar(
-                    backgroundColor: Colors.white,
-                    child: Icon(Icons.favorite_border),
-                  ),
-                ),
-
-                Container(
-                  width: double.infinity,
-                  height: 280,
-                  child: Image.asset(
-                    product.image,
-                    fit: BoxFit.cover,
-                  ),
-                ),
-
-
-
-
-              ],
+                ],
+              ),
             ),
 
             // ------------------ اسم + سعر + ريتنج ------------------
@@ -64,9 +66,8 @@ class ProductDetailsScreen extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-
                   Text(
-                    product.name,
+                    widget.product.name,
                     style: TextStyle(
                       fontSize: 24,
                       fontWeight: FontWeight.bold,
@@ -74,18 +75,27 @@ class ProductDetailsScreen extends StatelessWidget {
                   ),
 
                   SizedBox(height: 10),
-
+                  // ------------------ الوصف ------------------
+                  Text(
+                    widget.product.description,
+                    style: TextStyle(
+                      color: Colors.black87,
+                      height: 1.5,
+                      fontSize: 15,
+                    ),
+                  ),
+                  SizedBox(height: 10),
                   Row(
                     children: [
                       Icon(Icons.star, color: Colors.orange, size: 20),
                       SizedBox(width: 4),
                       Text(
-                        product.rating.toString(),
+                        widget.product.rating.toString(),
                         style: TextStyle(fontSize: 16),
                       ),
                       Spacer(),
                       Text(
-                        "\$${product.price}",
+                        "\$${widget.product.price}",
                         style: TextStyle(
                           fontSize: 26,
                           fontWeight: FontWeight.bold,
@@ -95,17 +105,7 @@ class ProductDetailsScreen extends StatelessWidget {
                     ],
                   ),
 
-                  SizedBox(height: 20),
 
-                  // ------------------ الوصف ------------------
-                  Text(
-                    product.description,
-                    style: TextStyle(
-                      color: Colors.black87,
-                      height: 1.5,
-                      fontSize: 15,
-                    ),
-                  ),
 
                   SizedBox(height: 25),
 
@@ -130,7 +130,7 @@ class ProductDetailsScreen extends StatelessWidget {
                     ],
                   ),
 
-                  SizedBox(height: 25),
+                  SizedBox(height:10),
 
                   // ------------------ Portion Size ------------------
                   Text(
@@ -153,7 +153,54 @@ class ProductDetailsScreen extends StatelessWidget {
                     ],
                   ),
 
-                  SizedBox(height: 30),
+                  SizedBox(height:20),
+
+                  // ------------------- Counter + Final Price -------------------
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      // Counter
+                      Row(
+                        children: [
+                          IconButton(
+                            onPressed: () {
+                              if (quantity > 1) {
+                                setState(() {
+                                  quantity--;
+                                });
+                              }
+                            },
+                            icon: Icon(Icons.remove_circle, size: 30, color: Colors.red),
+                          ),
+
+                          Text(
+                            quantity.toString(),
+                            style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+                          ),
+
+                          IconButton(
+                            onPressed: () {
+                              setState(() {
+                                quantity++;
+                              });
+                            },
+                            icon: Icon(Icons.add_circle, size: 30, color: Colors.red),
+                          ),
+                        ],
+                      ),
+
+                      Text(
+                        "\$${(widget.product.price * quantity).toStringAsFixed(2)}",
+                        style: TextStyle(
+                          fontSize: 24,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black87,
+                        ),
+                      ),
+                    ],
+                  ),
+
+                  SizedBox(height: 25),
 
                   // ------------------ Add to Cart ------------------
                   Container(
@@ -165,7 +212,7 @@ class ProductDetailsScreen extends StatelessWidget {
                     ),
                     child: Center(
                       child: Text(
-                        "Add to Cart",
+                        "Order Now",
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 18,
@@ -186,7 +233,6 @@ class ProductDetailsScreen extends StatelessWidget {
   }
 
   // ------------------ Widgets ------------------
-
   Widget spiceOption(String text) {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 14, vertical: 10),
