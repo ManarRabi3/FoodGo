@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       routes: {
-        PaymentScreen.routeName: (context) =>  const PaymentScreen(),
+       // PaymentScreen.routeName: (context) =>  const PaymentScreen(),
       },
       home: const SplashScreen(),
     );
