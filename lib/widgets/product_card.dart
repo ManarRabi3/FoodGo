@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:foodgo/models/product_model.dart';
+import 'package:foodgo/provider/my_provider.dart';
 //import 'package:foodgo/screens/product_details_screen.dart';
 import 'package:foodgo/widgets/product_details_screen.dart';
+import 'package:provider/provider.dart';
 
 
 
@@ -15,6 +17,11 @@ class ProductCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    final myProvider = Provider.of<my_provider>(context);
+    bool isFav = myProvider.isFavorite(product);
+
+
     return Material(   // ه
       color: Colors.white,
       borderRadius: BorderRadius.circular(16),
@@ -36,8 +43,8 @@ class ProductCard extends StatelessWidget {
             borderRadius: BorderRadius.circular(16),
             boxShadow: [
               BoxShadow(
-                color: Colors.black12,
-                blurRadius: 6,
+                color: Colors.white,
+                blurRadius: 2,
                 offset: Offset(0, 3),
               ),
             ],
@@ -89,11 +96,16 @@ class ProductCard extends StatelessWidget {
                     ],
                   ),
 
-                  Icon(
-                    Icons.favorite_border,
-                    size: 22,
-                    color: Colors.black87,
-                  ),
+                  IconButton(
+                    onPressed: () {
+                      myProvider.toggleFavorite(product);
+                    },
+                    icon: Icon(
+                      isFav ? Icons.favorite : Icons.favorite_border,
+                      color: isFav ? Colors.red : Colors.black87,
+                    ),
+                  )
+
                 ],
               ),
             ],
