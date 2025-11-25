@@ -11,7 +11,7 @@ class my_provider extends ChangeNotifier {
     } else {
       favoriteList.add(product);
     }
-    notifyListeners(); // مهم جداً علشان يحدث الواجهة
+    notifyListeners();
   }
 
   bool isFavorite(Product product) {

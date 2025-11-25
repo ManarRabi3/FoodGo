@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../provider/my_provider.dart';
-import '../widgets/product_card.dart'; // لو عندك الكارد في widgets
+import '../widgets/product_card.dart';
 
 class FavoriteTab extends StatelessWidget {
   const FavoriteTab({super.key});
 
   @override
   Widget build(BuildContext context) {
-    // جلب البروفايدر
+    //  البروفايدر
     final myProvider = Provider.of<my_provider>(context);
 
-    // جلب قائمة الفيفروت
+    //  قائمة الفيفروت
     final favorites = myProvider.favorites;
 
     return Scaffold(

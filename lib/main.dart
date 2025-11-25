@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:foodgo/Payment/payment_screen.dart';
 import 'package:provider/provider.dart';
 import 'screens/splash_screen.dart';
-import 'provider/my_provider.dart';  // المكان حسب اللي عندك
+import 'provider/my_provider.dart';
 
 void main() {
   runApp(
@@ -21,9 +22,12 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: SplashScreen(),
+      routes: {
+        PaymentScreen.routeName: (context) =>  const PaymentScreen(),
+      },
+      home: const SplashScreen(),
     );
   }
 }
