@@ -14,6 +14,7 @@ class ProductDetailsScreen extends StatefulWidget {
 class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
   int quantity = 1;
 
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -204,7 +205,9 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                   //Order Now
                   InkWell(
                     onTap: () {
-                      Navigator.pushNamed(context, PaymentScreen.routeName);
+
+                      Navigator.pushNamed(context, PaymentScreen.routeName,
+                        arguments: widget.product.price * quantity,);
                     },
 
                     child: Container(

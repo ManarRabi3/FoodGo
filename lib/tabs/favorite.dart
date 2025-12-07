@@ -8,10 +8,8 @@ class FavoriteTab extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    //  البروفايدر
     final myProvider = Provider.of<my_provider>(context);
 
-    //  قائمة الفيفروت
     final favorites = myProvider.favorites;
 
     return Scaffold(
